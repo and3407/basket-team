@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  basket_team:
+    build:
+      context: .
+      dockerfile: openjdk.Dockerfile
+    container_name: 'basket_team'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.basket_team.rule=Host(`basket-team.localhost`)"
+      - "traefik.http.routers.basket_team.entrypoints=web"
+    ports:
+      - "8081"
+    networks:
+      - webserver
+
+networks:
+  webserver:
+    driver: bridge
+    external: true
+
+

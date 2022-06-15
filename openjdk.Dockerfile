@@ -1,7 +1,7 @@
 #FROM openjdk:11
 #ADD /target/basketteam-0.0.1-SNAPSHOT.jar app.jar
 #ENTRYPOINT ["java","-jar","app.jar"]
-ARG CACHEBUST=0
+#ARG CACHEBUST=0
 
 FROM maven:3.8.5-openjdk-11 as MAVEN_BUILD
 
@@ -10,7 +10,7 @@ COPY src /build/src/
 
 WORKDIR /build/
 
-ARG CACHEBUST
+#ARG CACHEBUST
 RUN mvn clean package -DskipTests
 
 FROM openjdk:11

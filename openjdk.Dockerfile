@@ -9,7 +9,7 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 WORKDIR /build/
-RUN mvn clean package -DskipTests --no-cache
+RUN mvn clean package -DskipTests
 
 FROM openjdk:11
 

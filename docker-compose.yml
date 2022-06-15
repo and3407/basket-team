@@ -9,7 +9,8 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.basket_team.rule=Host(`api.basket-team.q91711ta.beget.tech`)"
-      - "traefik.http.routers.basket_team.entrypoints=web"
+      - "traefik.http.routers.registry.entrypoints=websecure"
+      - "traefik.http.routers.registry.tls.certresolver=myresolver"
     ports:
       - "8081"
     networks:

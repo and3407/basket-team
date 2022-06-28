@@ -4,6 +4,7 @@ import com.basketteamapi.basketteam.components.player.Player;
 import com.basketteamapi.basketteam.components.player.PlayerService;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import com.basketteamapi.basketteam.components.user.User;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class PlayerController {
     }
 
     @PostMapping(path = "add-player")
-    public Player addPlayer(@RequestBody Player player) {
+    public Player addPlayer(@RequestBody @NotNull Player player) {
 
         User user = authFacade.getAuthUser();
 

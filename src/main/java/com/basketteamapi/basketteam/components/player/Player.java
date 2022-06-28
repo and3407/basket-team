@@ -1,8 +1,7 @@
 package com.basketteamapi.basketteam.components.player;
 
+import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
@@ -22,4 +21,6 @@ public class Player {
     private String name;
 
     private Boolean high;
+
+    private Boolean active = true;
 }

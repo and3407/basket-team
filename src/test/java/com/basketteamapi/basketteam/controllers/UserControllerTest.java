@@ -1,7 +1,7 @@
 package com.basketteamapi.basketteam.controllers;
 
 import com.basketteamapi.basketteam.security.UserAuthToken;
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

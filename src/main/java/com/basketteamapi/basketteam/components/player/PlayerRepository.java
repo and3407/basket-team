@@ -1,5 +1,6 @@
 package com.basketteamapi.basketteam.components.player;
 
+import com.basketteamapi.basketteam.models.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

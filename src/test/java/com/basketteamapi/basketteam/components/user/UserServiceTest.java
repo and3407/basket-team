@@ -1,8 +1,6 @@
 package com.basketteamapi.basketteam.components.user;
 
-import com.basketteamapi.basketteam.components.user.User;
-import com.basketteamapi.basketteam.components.user.UserRepository;
-import com.basketteamapi.basketteam.components.user.UserService;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.UserAuthToken;
 import com.basketteamapi.basketteam.components.user.exceptions.UserNameIsBusyException;
 import org.junit.jupiter.api.Assertions;

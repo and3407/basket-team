@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.controllers;
 
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

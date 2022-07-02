@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.security;
 
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.components.user.UserService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

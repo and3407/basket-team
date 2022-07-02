@@ -1,4 +1,4 @@
-package com.basketteamapi.basketteam.components.player;
+package com.basketteamapi.basketteam.models;
 
 import lombok.Builder;
 import lombok.Data;

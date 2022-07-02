@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.components.services;
 
-import com.basketteamapi.basketteam.components.player.Player;
+import com.basketteamapi.basketteam.models.Player;
 import com.basketteamapi.basketteam.components.player.PlayerRepository;
 import com.basketteamapi.basketteam.components.player.PlayerService;
 import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;

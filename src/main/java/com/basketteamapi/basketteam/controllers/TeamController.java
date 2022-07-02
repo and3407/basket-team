@@ -3,7 +3,7 @@ package com.basketteamapi.basketteam.controllers;
 import com.basketteamapi.basketteam.components.player.PlayerService;
 import com.basketteamapi.basketteam.components.team.TeamService;
 import com.basketteamapi.basketteam.components.team.TeamSize;
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

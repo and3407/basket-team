@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.controllers;
 
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.components.user.UserService;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import com.basketteamapi.basketteam.security.UserAuthToken;

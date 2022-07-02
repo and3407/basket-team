@@ -1,8 +1,8 @@
 package com.basketteamapi.basketteam.controllers;
 
-import com.basketteamapi.basketteam.components.player.Player;
+import com.basketteamapi.basketteam.models.Player;
 import com.basketteamapi.basketteam.components.player.PlayerService;
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.components.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

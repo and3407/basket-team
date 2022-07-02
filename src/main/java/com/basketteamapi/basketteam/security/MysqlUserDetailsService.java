@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.security;
 
-import com.basketteamapi.basketteam.components.user.User;
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.components.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

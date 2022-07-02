@@ -1,6 +1,6 @@
 package com.basketteamapi.basketteam.controllers;
 
-import com.basketteamapi.basketteam.components.player.Player;
+import com.basketteamapi.basketteam.models.Player;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

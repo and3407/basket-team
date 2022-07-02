@@ -1,11 +1,10 @@
 package com.basketteamapi.basketteam.components.team;
 
-import com.basketteamapi.basketteam.components.player.Player;
+import com.basketteamapi.basketteam.models.Player;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 

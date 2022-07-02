@@ -1,5 +1,6 @@
 package com.basketteamapi.basketteam.components.user;
 
+import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.UserAuthToken;
 import com.basketteamapi.basketteam.components.user.exceptions.UserNameIsBusyException;
 import org.springframework.security.crypto.password.PasswordEncoder;

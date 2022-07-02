@@ -1,0 +1,34 @@
+[
+  [
+    {
+      "quantityActivePlayers": 5,
+      "quantityReservePlayers": 1
+    },
+    {
+      "quantityActivePlayers": 5,
+      "quantityReservePlayers": 0
+    },
+    {
+      "quantityActivePlayers": 5,
+      "quantityReservePlayers": 0
+    }
+  ],
+  [
+    {
+      "quantityActivePlayers": 4,
+      "quantityReservePlayers": 0
+    },
+    {
+      "quantityActivePlayers": 4,
+      "quantityReservePlayers": 0
+    },
+    {
+      "quantityActivePlayers": 4,
+      "quantityReservePlayers": 0
+    },
+    {
+      "quantityActivePlayers": 4,
+      "quantityReservePlayers": 0
+    }
+  ]
+]

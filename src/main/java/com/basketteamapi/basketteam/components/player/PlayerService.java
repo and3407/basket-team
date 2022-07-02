@@ -1,7 +1,6 @@
 package com.basketteamapi.basketteam.components.player;
 
 import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +18,8 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    public List<Player> getList(Long id) {
-        return playerRepository.findAllByUserId(id);
+    public List<Player> getList(Long userId) {
+        return playerRepository.findAllByUserId(userId);
     }
 
     public void deletePlayer(Player player) {
@@ -41,5 +40,9 @@ public class PlayerService {
 
     private boolean isExistPlayer(Player player) {
         return playerRepository.existsById(player.getId());
+    }
+
+    public int getTotalNumberPlayers(Long userId) {
+        return playerRepository.countByUserIdAndActive(userId, true);
     }
 }

@@ -1,11 +1,15 @@
 package com.basketteamapi.basketteam.controllers;
 
+import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;
 import com.basketteamapi.basketteam.models.Player;
 import com.basketteamapi.basketteam.components.player.PlayerService;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import com.basketteamapi.basketteam.models.User;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -39,9 +43,7 @@ public class PlayerController {
     }
 
     @PutMapping(path = "update-player")
-    public void updatePlayer(@RequestBody Player player) {
-        playerService.updatePlayer(player);
-    }
+    public void updatePlayer(@RequestBody Player player) {playerService.updatePlayer(player);}
 
     @DeleteMapping(path = "delete-player")
     public void deletePlayer(@RequestBody Player player) {

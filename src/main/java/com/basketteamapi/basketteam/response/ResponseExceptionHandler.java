@@ -21,7 +21,7 @@ public class ResponseExceptionHandler {
     protected ResponseEntity<Object> handlerNotFoundEntityException(RuntimeException exception) {
         ApiResponse response = new ApiResponse (
                 HttpStatus.NOT_FOUND.value(),
-                exception.getMessage()
+                exception.getClass() + ", " +exception.getMessage()
         );
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
@@ -33,7 +33,7 @@ public class ResponseExceptionHandler {
     protected ResponseEntity<Object> handlerBadRequestException(RuntimeException exception) {
         ApiResponse response = new ApiResponse (
                 HttpStatus.BAD_REQUEST.value(),
-                exception.getMessage()
+                exception.getClass() + ", " +exception.getMessage()
         );
 
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

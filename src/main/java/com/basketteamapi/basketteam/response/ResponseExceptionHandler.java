@@ -1,7 +1,6 @@
 package com.basketteamapi.basketteam.response;
 
 import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;
-import com.basketteamapi.basketteam.components.team.exception.TeamSizeException;
 import com.basketteamapi.basketteam.components.team.exception.TeamSizeNotFoundException;
 import com.basketteamapi.basketteam.components.user.exceptions.UserNameIsBusyException;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class ResponseExceptionHandler {
     }
 
     @ExceptionHandler(value = {
-            TeamSizeException.class,
+
     })
     protected ResponseEntity<Object> handlerBadRequestException(RuntimeException exception) {
         ApiResponse response = new ApiResponse (

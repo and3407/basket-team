@@ -3,17 +3,13 @@ package com.basketteamapi.basketteam.controllers;
 import com.basketteamapi.basketteam.components.player.PlayerService;
 import com.basketteamapi.basketteam.components.team.TeamService;
 import com.basketteamapi.basketteam.components.team.TeamSize;
-import com.basketteamapi.basketteam.components.team.exception.FileTeamSizeNotFoundException;
-import com.basketteamapi.basketteam.components.team.exception.TeamSizeException;
 import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("v1/team")
@@ -30,15 +26,8 @@ public class TeamController {
     }
 
     @GetMapping(path = "teams-sizes")
-    public List<TeamSize> getTeamsSizes() {
+    public ArrayList<ArrayList<TeamSize>> getTeamsSizes() {
         User user = authFacade.getAuthUser();
-
-        try {
-            return teamService.getTeamsSizes(playerService.getTotalNumberPlayers(user.getId()));
-        } catch (FileNotFoundException exception) {
-            throw new FileTeamSizeNotFoundException("Активных игроков должно быть от 3 до 20");
-        } catch (IOException exception) {
-            throw new TeamSizeException(exception.getMessage());
-        }
+        return teamService.getTeamsSizes(playerService.getTotalNumberPlayers(user.getId()));
     }
 }

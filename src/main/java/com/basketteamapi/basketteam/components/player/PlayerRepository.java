@@ -11,4 +11,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     public List<Player> findAllByUserId(long userId);
 
     public int countByUserIdAndActive(Long userId, boolean active);
+
+    List<Player> findByUserIdAndActive(Long userId, boolean active);
 }

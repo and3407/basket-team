@@ -1,8 +1,8 @@
 package com.basketteamapi.basketteam.components.player;
 
+import com.basketteamapi.basketteam.components.player.exceptions.NotActivePlayersException;
 import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;
 import com.basketteamapi.basketteam.models.Player;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +22,15 @@ public class PlayerService {
 
     public List<Player> getList(Long userId) {
         return playerRepository.findAllByUserId(userId);
+    }
+    public List<Player> getActivePlayers(Long userId) {
+        List<Player> players = playerRepository.findByUserIdAndActive(userId, true);
+
+        if (players.isEmpty()) {
+            throw new NotActivePlayersException("Not active players by userId" + userId);
+        }
+
+        return players;
     }
 
     public void deletePlayer(Player player) {
@@ -44,7 +53,7 @@ public class PlayerService {
         return playerRepository.existsById(player.getId());
     }
 
-    public int getTotalNumberPlayers(Long userId) {
+    public int getTotalNumberActivePlayers(Long userId) {
         return playerRepository.countByUserIdAndActive(userId, true);
     }
 }

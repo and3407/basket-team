@@ -1,11 +1,14 @@
 package com.basketteamapi.basketteam.controllers;
 
 import com.basketteamapi.basketteam.components.player.PlayerService;
+import com.basketteamapi.basketteam.components.team.Team;
 import com.basketteamapi.basketteam.components.team.TeamService;
 import com.basketteamapi.basketteam.components.team.TeamSize;
 import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +31,16 @@ public class TeamController {
     @GetMapping(path = "teams-sizes")
     public ArrayList<ArrayList<TeamSize>> getTeamsSizes() {
         User user = authFacade.getAuthUser();
-        return teamService.getTeamsSizes(playerService.getTotalNumberPlayers(user.getId()));
+        return teamService.getTeamsSizes(playerService.getTotalNumberActivePlayers(user.getId()));
+    }
+
+    @GetMapping(path = "teams")
+    public void getTeams(@RequestBody @NotNull ArrayList<TeamSize> teamsSizes) {
+        User user = authFacade.getAuthUser();
+
+        teamService.distributionPlayersByTeams(
+                playerService.getActivePlayers(user.getId()),
+                teamsSizes
+        );
     }
 }

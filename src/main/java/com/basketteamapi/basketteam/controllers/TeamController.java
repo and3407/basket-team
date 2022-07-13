@@ -1,7 +1,6 @@
 package com.basketteamapi.basketteam.controllers;
 
 import com.basketteamapi.basketteam.components.player.PlayerService;
-import com.basketteamapi.basketteam.components.team.Team;
 import com.basketteamapi.basketteam.components.team.TeamService;
 import com.basketteamapi.basketteam.components.team.TeamSize;
 import com.basketteamapi.basketteam.models.User;
@@ -38,7 +37,7 @@ public class TeamController {
     public void getTeams(@RequestBody @NotNull ArrayList<TeamSize> teamsSizes) {
         User user = authFacade.getAuthUser();
 
-        teamService.distributionPlayersByTeams(
+        teamService.distributePlayersByTeams(
                 playerService.getActivePlayers(user.getId()),
                 teamsSizes
         );

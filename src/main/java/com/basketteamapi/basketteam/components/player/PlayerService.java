@@ -27,7 +27,7 @@ public class PlayerService {
         List<Player> players = playerRepository.findByUserIdAndActive(userId, true);
 
         if (players.isEmpty()) {
-            throw new NotActivePlayersException("Not active players by userId" + userId);
+            throw new NotActivePlayersException("Not active players by userId: " + userId);
         }
 
         return players;
@@ -35,7 +35,7 @@ public class PlayerService {
 
     public void deletePlayer(Player player) {
         if (!this.isExistPlayer(player)) {
-            throw new PlayerNotFoundException("Player not found playerId:" + player.getId());
+            throw new PlayerNotFoundException("Player not found playerId: " + player.getId());
         }
 
         playerRepository.delete(player);
@@ -43,7 +43,7 @@ public class PlayerService {
 
     public void updatePlayer(Player player) {
         if (!this.isExistPlayer(player)) {
-            throw new PlayerNotFoundException("Player not found playerId:" + player.getId());
+            throw new PlayerNotFoundException("Player not found playerId: " + player.getId());
         }
 
         playerRepository.save(player);

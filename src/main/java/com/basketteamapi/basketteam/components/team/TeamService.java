@@ -12,13 +12,8 @@ public class TeamService {
         return TeamsSizesConfig.getTeamsSizes(totalNumberPlayer);
     }
 
-    public void distributionPlayersByTeams(List<Player> players, List<TeamSize> teamsSizes) {
-        for (Player player : players) {
-            System.out.println(player.toString());
-        }
-
-        for (TeamSize teamSize : teamsSizes) {
-            System.out.println(teamSize.toString());
-        }
+    public void distributePlayersByTeams(List<Player> players, List<TeamSize> teamsSizes) {
+        DistributionPlayersByTeams distribution = new DistributionPlayersByTeams(players, teamsSizes);
+        distribution.getTeams();
     };
 }

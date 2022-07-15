@@ -1,8 +1,9 @@
 package com.basketteamapi.basketteam.controllers;
 
 import com.basketteamapi.basketteam.components.player.PlayerService;
+import com.basketteamapi.basketteam.components.team.Team;
 import com.basketteamapi.basketteam.components.team.TeamService;
-import com.basketteamapi.basketteam.components.team.TeamSize;
+import com.basketteamapi.basketteam.components.team.TeamGroup;
 import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import org.jetbrains.annotations.NotNull;
@@ -28,18 +29,18 @@ public class TeamController {
     }
 
     @GetMapping(path = "teams-sizes")
-    public ArrayList<ArrayList<TeamSize>> getTeamsSizes() {
+    public ArrayList<TeamGroup> getTeamsSizes() {
         User user = authFacade.getAuthUser();
-        return teamService.getTeamsSizes(playerService.getTotalNumberActivePlayers(user.getId()));
+        return teamService.getTeamGroup(playerService.getTotalNumberActivePlayers(user.getId()));
     }
 
     @GetMapping(path = "teams")
-    public void getTeams(@RequestBody @NotNull ArrayList<TeamSize> teamsSizes) {
+    public void getTeams(@RequestBody @NotNull TeamGroup teamGroup) {
         User user = authFacade.getAuthUser();
 
         teamService.distributePlayersByTeams(
                 playerService.getActivePlayers(user.getId()),
-                teamsSizes
+                teamGroup
         );
     }
 }

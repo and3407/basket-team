@@ -8,12 +8,15 @@ import java.util.List;
 
 @Service
 public class TeamService {
-    public ArrayList<ArrayList<TeamSize>> getTeamsSizes(int totalNumberPlayer) {
-        return TeamsSizesConfig.getTeamsSizes(totalNumberPlayer);
+    public ArrayList<TeamGroup> getTeamGroup(int totalNumberPlayer) {
+        return TeamGroupConfig.getTeamGroup(totalNumberPlayer);
     }
 
-    public void distributePlayersByTeams(List<Player> players, List<TeamSize> teamsSizes) {
-        DistributionPlayersByTeams distribution = new DistributionPlayersByTeams(players, teamsSizes);
-        distribution.getTeams();
+    public void distributePlayersByTeams(List<Player> players, TeamGroup teamGroup) {
+        DistributionPlayersByTeams distribution = new DistributionPlayersByTeams(players, teamGroup);
+
+        for (Team team : distribution.getTeamGroup().getTeams()) {
+            System.out.println(team.toString());
+        }
     };
 }

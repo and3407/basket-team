@@ -1,5 +1,6 @@
 package com.basketteamapi.basketteam.components.team;
 
+import com.basketteamapi.basketteam.components.team.exception.NumberPlayersNotMatchNumberTeamGroup;
 import com.basketteamapi.basketteam.models.Player;
 
 import java.util.ArrayList;
@@ -7,27 +8,57 @@ import java.util.Collections;
 import java.util.List;
 
 public class DistributionPlayersByTeams {
-    private List<Player> players;
-    private List<TeamSize> teamSizes;
-    private List<Team> teams;
+    private final List<Player> players;
+    private final TeamGroup teamGroup;
 
-    public DistributionPlayersByTeams(List<Player> players, List<TeamSize> teamSizes) {
+    public DistributionPlayersByTeams(List<Player> players, TeamGroup teamGroup) {
         this.players = players;
-        this.teamSizes = teamSizes;
-        this.teams = new ArrayList<>();
+        this.teamGroup = teamGroup;
     }
 
-    public List<Team> getTeams() {
+    public TeamGroup getTeamGroup() {
+        if (teamGroup.getTotalQuantityPlayers() != players.size()) {
+            throw new NumberPlayersNotMatchNumberTeamGroup("Кол-во игроков не совпадает с кол-вом игроков в группе");
+        }
 
-        //проверка что у всех комманд максимальное кол-во игроков = кол-ву активных игроков юзера
+        for (Team team : teamGroup.getTeams()) {
+            fillCommand(team);
+        }
 
-        System.out.println(getRandomPlayer().getId());
-        return teams;
+        return teamGroup;
     }
 
     private Player getRandomPlayer() {
         Collections.shuffle(players);
 
         return players.remove(0);
+    }
+
+    private void fillCommand(Team team) {
+        List<Player> activePlayers = new ArrayList<>();
+        List<Player> reservePlayers = new ArrayList<>();
+
+        for (int i = players.size(); i > 0; i--) {
+            Player player = getRandomPlayer();
+
+            if (team.getQuantityActivePlayers() > activePlayers.size()) {
+                activePlayers.add(player);
+                continue;
+            }
+
+            if (team.getQuantityReservePlayers() > reservePlayers.size()) {
+                reservePlayers.add(player);
+            }
+
+            if (
+                (team.getQuantityActivePlayers() == activePlayers.size()) &&
+                (team.getQuantityReservePlayers() == reservePlayers.size())
+            ) {
+                break;
+            }
+        }
+
+        team.setActivePlayers(activePlayers);
+        team.setReservePlayers(reservePlayers);
     }
 }

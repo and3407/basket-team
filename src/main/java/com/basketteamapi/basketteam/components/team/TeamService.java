@@ -12,11 +12,9 @@ public class TeamService {
         return TeamGroupConfig.getTeamGroup(totalNumberPlayer);
     }
 
-    public void distributePlayersByTeams(List<Player> players, TeamGroup teamGroup) {
+    public TeamGroup distributePlayersByTeams(List<Player> players, TeamGroup teamGroup) {
         DistributionPlayersByTeams distribution = new DistributionPlayersByTeams(players, teamGroup);
 
-        for (Team team : distribution.getTeamGroup().getTeams()) {
-            System.out.println(team.toString());
-        }
-    };
+        return distribution.getTeamGroup();
+    }
 }

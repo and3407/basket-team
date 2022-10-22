@@ -1,19 +1,15 @@
 package com.basketteamapi.basketteam.controllers;
 
-import com.basketteamapi.basketteam.components.player.exceptions.PlayerNotFoundException;
-import com.basketteamapi.basketteam.models.Player;
 import com.basketteamapi.basketteam.components.player.PlayerService;
-import com.basketteamapi.basketteam.security.IAuthenticationFacade;
+import com.basketteamapi.basketteam.models.Player;
 import com.basketteamapi.basketteam.models.User;
+import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(allowedHeaders = "Content-Type", maxAge = 3600)
+@CrossOrigin(origins = "http://api.basket-team.q91711ta.beget.tech", allowedHeaders = "Content-Type", maxAge = 3600)
 @RestController
 @RequestMapping("v1/players")
 public class PlayerController {

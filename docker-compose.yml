@@ -10,6 +10,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.basket_team.rule=Host(`api.basket-team.q91711ta.beget.tech`)"
       - "traefik.http.routers.basket_team.entrypoints=web"
+      - "traefik.http.middlewares.basket_team.headers.customresponseheaders.Access-Control-Allow-Origin:*"
     ports:
       - "8081"
     networks:

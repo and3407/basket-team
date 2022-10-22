@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://api.basket-team.q91711ta.beget.tech", allowedHeaders = "Content-Type", maxAge = 3600)
 @RestController
 @RequestMapping("v1/players")
 public class PlayerController {

@@ -7,6 +7,7 @@ import com.basketteamapi.basketteam.security.UserAuthToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("v1/users")
 public class UserController {

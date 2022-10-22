@@ -13,7 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://api.basket-team.q91711ta.beget.tech", maxAge = 3600)
+@CrossOrigin(allowedHeaders = "Content-Type", maxAge = 3600)
 @RestController
 @RequestMapping("v1/players")
 public class PlayerController {

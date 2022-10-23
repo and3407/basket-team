@@ -6,13 +6,11 @@ import com.basketteamapi.basketteam.components.team.TeamService;
 import com.basketteamapi.basketteam.models.User;
 import com.basketteamapi.basketteam.security.IAuthenticationFacade;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("v1/team")
 public class TeamController {

@@ -22,30 +22,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .csrf().disable()
-            .authorizeRequests()
-                .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
-                .anyRequest().authenticated()
-            .and().httpBasic()
-            .and().sessionManagement().disable();
-
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
-
-//        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-//        corsConfiguration.setAllowedOrigins(List.of("*"));
-//        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
-//        corsConfiguration.setAllowCredentials(true);
-//        corsConfiguration.setExposedHeaders(List.of("Authorization"));
-//
-//
-//        http.cors().configurationSource(request -> corsConfiguration)
-//            .and().csrf().disable().authorizeRequests()
+//        http
+//            .csrf().disable()
+//            .authorizeRequests()
 //                .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
-//                    .anyRequest().authenticated()
+//                .anyRequest().authenticated()
 //            .and().httpBasic()
 //            .and().sessionManagement().disable();
+//
+//        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
+
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        corsConfiguration.setAllowedOrigins(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+
+
+        http.cors().configurationSource(request -> corsConfiguration)
+            .and().csrf().disable().authorizeRequests()
+                .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
+                    .anyRequest().authenticated()
+            .and().httpBasic()
+            .and().sessionManagement().disable();
 
         http
             .logout().permitAll()

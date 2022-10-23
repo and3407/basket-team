@@ -12,6 +12,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 
+import java.util.List;
+
 @Configuration
 @EnableConfigurationProperties
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -28,15 +30,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //            .and().httpBasic()
 //            .and().sessionManagement().disable();
 
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
+        corsConfiguration.setAllowedOrigins(List.of("*"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
+        corsConfiguration.setAllowCredentials(true);
+        corsConfiguration.setExposedHeaders(List.of("Authorization"));
+
 
         http
             .authorizeRequests()
             .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
                 .anyRequest().authenticated()
             .and().csrf().disable()
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
-//            .and().httpBasic()
-//            .and().sessionManagement().disable();
+                .cors().configurationSource(request -> corsConfiguration)
+            .and().httpBasic()
+            .and().sessionManagement().disable();
 
         http
             .logout().permitAll()

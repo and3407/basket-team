@@ -32,29 +32,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
-//        CorsConfiguration corsConfiguration = new CorsConfiguration();
-//        corsConfiguration.setAllowedHeaders(List.of("Authorization", "Cache-Control", "Content-Type"));
-//        corsConfiguration.setAllowedOrigins(List.of("*"));
-//        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PUT","OPTIONS","PATCH", "DELETE"));
-//        corsConfiguration.setAllowCredentials(true);
-//        corsConfiguration.setExposedHeaders(List.of("Authorization"));
-
-
-//        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
-//            .and()
-//                .csrf().disable()
-//                .authorizeRequests()
-//                .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
-//                .anyRequest().authenticated()
-//            .and().httpBasic()
-//            .and().sessionManagement().disable();
-
-            http
+        http
             .authorizeRequests()
                 .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
                 .anyRequest().authenticated()
-            .and().httpBasic().and().csrf().disable()
+            .and().csrf().disable()
                     .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
+            .and().httpBasic()
             .and().sessionManagement().disable();
 
         http

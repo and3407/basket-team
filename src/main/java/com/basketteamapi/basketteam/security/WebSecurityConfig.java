@@ -20,15 +20,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
-
         http
             .csrf().disable()
             .authorizeRequests()
                 .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
                 .anyRequest().authenticated()
             .and().httpBasic()
-            .and().sessionManagement().disable();
+            .and().sessionManagement().disable()
+            .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
         http
             .logout().permitAll()

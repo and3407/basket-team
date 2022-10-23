@@ -38,12 +38,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
 
-        http
-            .authorizeRequests()
-            .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
-                .anyRequest().authenticated()
-            .and().csrf().disable()
-                .cors().configurationSource(request -> corsConfiguration)
+        http.cors().configurationSource(request -> corsConfiguration)
+            .and().csrf().disable().authorizeRequests()
+                .antMatchers("/v1/users/register", "/v1/users/ok").permitAll()
+                    .anyRequest().authenticated()
             .and().httpBasic()
             .and().sessionManagement().disable();
 

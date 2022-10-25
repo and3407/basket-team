@@ -38,10 +38,10 @@ public class PlayerController {
         return playerService.addPlayer(player);
     }
 
-    @PutMapping(path = "update-player")
+    @PostMapping(path = "update-player")
     public void updatePlayer(@RequestBody Player player) {playerService.updatePlayer(player);}
 
-    @DeleteMapping(path = "delete-player")
+    @PostMapping(path = "delete-player")
     public void deletePlayer(@RequestBody Player player) {
         playerService.deletePlayer(player);
     }

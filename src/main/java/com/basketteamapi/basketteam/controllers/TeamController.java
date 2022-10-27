@@ -31,7 +31,7 @@ public class TeamController {
         return teamService.getTeamGroup(playerService.getTotalNumberActivePlayers(user.getId()));
     }
 
-    @GetMapping(path = "teams")
+    @PostMapping(path = "teams")
     public TeamGroup getTeams(@RequestBody @NotNull TeamGroup teamGroup) {
         User user = authFacade.getAuthUser();
 
